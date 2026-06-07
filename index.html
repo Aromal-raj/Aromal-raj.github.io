@@ -1,242 +1,754 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Aromal Raj — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-.port{background:#070b14;color:#f1f5f9;min-height:600px;font-family:'Segoe UI',sans-serif}
-nav{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:rgba(7,11,20,0.95);border-bottom:1px solid rgba(59,130,246,0.15);position:sticky;top:0;z-index:10}
-.logo{font-family:monospace;font-size:13px;color:#3b82f6;letter-spacing:2px}
-.nav-links{display:flex;gap:4px}
-.nav-links button{background:none;border:none;color:#94a3b8;font-size:11px;font-family:monospace;letter-spacing:1px;padding:5px 10px;cursor:pointer;border-radius:4px;transition:all 0.2s}
-.nav-links button:hover,.nav-links button.active{color:#3b82f6;background:rgba(59,130,246,0.08)}
-.section{display:none;padding:32px 28px;animation:fadeIn 0.3s ease}
-.section.active{display:block}
-@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.stag{font-family:monospace;font-size:10px;color:#3b82f6;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px}
-.stitle{font-size:24px;font-weight:700;color:#f1f5f9;margin-bottom:6px}
-.sline{width:36px;height:2px;background:#3b82f6;border-radius:1px;margin-bottom:24px}
-.hero-wrap{background:linear-gradient(135deg,rgba(59,130,246,0.06) 0%,rgba(124,58,237,0.05) 100%);border-radius:12px;padding:40px 32px;border:1px solid rgba(59,130,246,0.12);margin-bottom:20px}
-.hero-tag{font-family:monospace;font-size:10px;color:#06b6d4;letter-spacing:3px;margin-bottom:12px}
-.hero-name{font-size:42px;font-weight:800;color:#f1f5f9;line-height:1.05;letter-spacing:-1px;margin-bottom:8px}
-.hero-name span{color:#3b82f6}
-.hero-role{font-family:monospace;font-size:12px;color:#06b6d4;margin-bottom:14px}
-.hero-bio{font-size:13px;color:#94a3b8;line-height:1.8;max-width:480px;margin-bottom:20px}
-.hero-btns{display:flex;gap:10px;flex-wrap:wrap}
-.btn-p{padding:9px 20px;background:#3b82f6;color:#fff;border:none;border-radius:5px;font-family:monospace;font-size:11px;letter-spacing:1px;cursor:pointer;transition:all 0.2s}
-.btn-p:hover{background:#1d4ed8;transform:translateY(-1px)}
-.btn-o{padding:9px 20px;background:transparent;color:#3b82f6;border:1px solid #3b82f6;border-radius:5px;font-family:monospace;font-size:11px;letter-spacing:1px;cursor:pointer;transition:all 0.2s}
-.btn-o:hover{background:rgba(59,130,246,0.1);transform:translateY(-1px)}
-.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.stat{background:rgba(13,19,33,0.8);border:1px solid rgba(59,130,246,0.15);border-radius:8px;padding:14px;text-align:center;transition:border-color 0.2s}
-.stat:hover{border-color:#3b82f6}
-.stat-n{font-size:22px;font-weight:800;color:#3b82f6;font-family:monospace}
-.stat-l{font-size:10px;color:#475569;letter-spacing:1px;font-family:monospace;margin-top:3px}
-.skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.skill-cat{background:#0d1321;border:1px solid rgba(59,130,246,0.15);border-radius:10px;padding:16px;transition:border-color 0.2s}
-.skill-cat:hover{border-color:#3b82f6}
-.scat-title{font-family:monospace;font-size:10px;color:#3b82f6;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
-.tags{display:flex;flex-wrap:wrap;gap:6px}
-.tag{padding:4px 10px;border-radius:20px;font-family:monospace;font-size:11px;background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);color:#93c5fd}
-.tag.p{background:rgba(124,58,237,0.08);border-color:rgba(124,58,237,0.2);color:#c4b5fd}
-.tag.c{background:rgba(6,182,212,0.08);border-color:rgba(6,182,212,0.2);color:#67e8f9}
-.proj-grid{display:grid;gap:14px}
-.proj-card{background:#0d1321;border:1px solid rgba(59,130,246,0.15);border-radius:10px;padding:20px;position:relative;overflow:hidden;transition:all 0.2s}
-.proj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:#3b82f6;transform:scaleX(0);transform-origin:left;transition:transform 0.3s}
-.proj-card:hover{border-color:#3b82f6;transform:translateY(-2px)}
-.proj-card:hover::before{transform:scaleX(1)}
-.pnum{font-family:monospace;font-size:10px;color:#3b82f6;letter-spacing:2px;margin-bottom:6px}
-.ptitle{font-size:15px;font-weight:700;color:#f1f5f9;margin-bottom:8px}
-.pdesc{font-size:12px;color:#94a3b8;line-height:1.7;margin-bottom:12px}
-.ptags{display:flex;flex-wrap:wrap;gap:5px}
-.ptag{font-family:monospace;font-size:10px;padding:3px 8px;background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.25);border-radius:3px;color:#c4b5fd}
-.edu-tl{position:relative;padding-left:20px}
-.edu-tl::before{content:'';position:absolute;left:0;top:8px;bottom:0;width:1.5px;background:rgba(59,130,246,0.2)}
-.edu-item{position:relative;margin-bottom:28px}
-.edu-item::before{content:'';position:absolute;left:-24px;top:7px;width:9px;height:9px;background:#3b82f6;border-radius:50%;border:2px solid #070b14}
-.eyear{font-family:monospace;font-size:10px;color:#3b82f6;letter-spacing:2px;margin-bottom:4px}
-.edeg{font-size:14px;font-weight:700;color:#f1f5f9;margin-bottom:3px}
-.eschool{font-size:13px;color:#60a5fa;font-weight:600;margin-bottom:3px}
-.edetail{font-size:12px;color:#94a3b8}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.contact-p{font-size:13px;color:#94a3b8;line-height:1.8;margin-bottom:18px}
-.clinks{display:flex;flex-direction:column;gap:8px}
-.clink{display:flex;align-items:center;gap:12px;padding:12px 14px;background:#0d1321;border:1px solid rgba(59,130,246,0.15);border-radius:8px;cursor:pointer;transition:all 0.2s}
-.clink:hover{border-color:#3b82f6;transform:translateX(3px)}
-.cicon{width:34px;height:34px;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.25);border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:11px;color:#3b82f6;flex-shrink:0}
-.clabel{font-family:monospace;font-size:10px;color:#475569;letter-spacing:1px;text-transform:uppercase}
-.cval{font-size:12px;color:#f1f5f9;margin-top:2px}
-.cform{display:flex;flex-direction:column;gap:8px}
-.cform input,.cform textarea{background:#0d1321;border:1px solid rgba(59,130,246,0.15);border-radius:6px;padding:9px 12px;color:#f1f5f9;font-family:monospace;font-size:11px;outline:none;resize:none;transition:border-color 0.2s}
-.cform input:focus,.cform textarea:focus{border-color:#3b82f6}
-.cform input::placeholder,.cform textarea::placeholder{color:#475569}
-.foot{text-align:center;padding:16px;border-top:1px solid rgba(59,130,246,0.1);font-family:monospace;font-size:10px;color:#475569;letter-spacing:1px}
-</style>
+  :root {
+    --bg: #070b14;
+    --bg2: #0d1321;
+    --bg3: #111827;
+    --blue: #3b82f6;
+    --blue-dim: #1d4ed8;
+    --purple: #7c3aed;
+    --purple-dim: #2d1b69;
+    --cyan: #06b6d4;
+    --text: #f1f5f9;
+    --text2: #94a3b8;
+    --text3: #475569;
+    --border: rgba(59,130,246,0.2);
+    --mono: 'Share Tech Mono', monospace;
+    --display: 'Syne', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-<div class="port">
+  html { scroll-behavior: smooth; height: 100%; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--display);
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 2px; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 2.5rem;
+    background: rgba(7,11,20,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 1rem;
+    color: var(--blue);
+    letter-spacing: 2px;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--text2);
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--blue); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 7rem 2.5rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 30%, rgba(59,130,246,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 20% 80%, rgba(124,58,237,0.07) 0%, transparent 70%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; z-index: 0;
+    background-image:
+      linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 700px; }
+  .hero-tag {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--blue);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.2s;
+  }
+  .hero-name {
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -1px;
+    color: var(--text);
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.4s;
+  }
+  .hero-name span { color: var(--blue); }
+  .hero-role {
+    font-family: var(--mono);
+    font-size: 1rem;
+    color: var(--cyan);
+    margin-top: 1.2rem;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.6s;
+  }
+  .hero-bio {
+    font-size: 1rem;
+    color: var(--text2);
+    line-height: 1.8;
+    margin-top: 1.2rem;
+    max-width: 540px;
+    font-weight: 400;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.8s;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    margin-top: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 1s;
+  }
+  .btn-primary {
+    padding: 0.7rem 1.8rem;
+    background: var(--blue);
+    color: #fff;
+    border: none; border-radius: 4px;
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--blue-dim); transform: translateY(-2px); }
+  .btn-outline {
+    padding: 0.7rem 1.8rem;
+    background: transparent;
+    color: var(--blue);
+    border: 1px solid var(--blue);
+    border-radius: 4px;
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-outline:hover { background: rgba(59,130,246,0.1); transform: translateY(-2px); }
+
+  /* ── SECTIONS ── */
+  section { padding: 5rem 2.5rem; max-width: 1100px; margin: 0 auto; width: 100%; }
+  main { flex: 1; display: flex; flex-direction: column; }
+  .section-tag {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--blue);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 0.4rem;
+  }
+  .section-line {
+    width: 48px; height: 3px;
+    background: var(--blue);
+    border-radius: 2px;
+    margin-bottom: 2.5rem;
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .about-text p {
+    color: var(--text2);
+    font-size: 0.97rem;
+    line-height: 1.9;
+    font-weight: 400;
+    margin-bottom: 1rem;
+  }
+  .about-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+  .stat-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.2rem;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+  .stat-card:hover { border-color: var(--blue); }
+  .stat-num {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--blue);
+    font-family: var(--mono);
+  }
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--text3);
+    letter-spacing: 1px;
+    margin-top: 0.3rem;
+    font-family: var(--mono);
+  }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--bg2); max-width: 100%; padding: 5rem 0; width: 100%; }
+  #skills .inner { max-width: 1100px; margin: 0 auto; padding: 0 2.5rem; }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.2rem;
+  }
+  .skill-category {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .skill-category:hover { border-color: var(--blue); transform: translateY(-3px); }
+  .skill-cat-title {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--blue);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .skill-tag {
+    padding: 0.3rem 0.8rem;
+    background: rgba(59,130,246,0.08);
+    border: 1px solid rgba(59,130,246,0.25);
+    border-radius: 20px;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: #93c5fd;
+    transition: background 0.2s;
+  }
+  .skill-tag:hover { background: rgba(59,130,246,0.18); }
+  .skill-tag.purple {
+    background: rgba(124,58,237,0.08);
+    border-color: rgba(124,58,237,0.25);
+    color: #c4b5fd;
+  }
+  .skill-tag.cyan {
+    background: rgba(6,182,212,0.08);
+    border-color: rgba(6,182,212,0.25);
+    color: #67e8f9;
+  }
+
+  /* ── PROJECTS ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .project-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.8rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--blue);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .project-card:hover { border-color: var(--blue); transform: translateY(-4px); }
+  .project-card:hover::before { transform: scaleX(1); }
+  .project-num {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--blue);
+    letter-spacing: 2px;
+    margin-bottom: 0.8rem;
+  }
+  .project-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.7rem;
+  }
+  .project-desc {
+    font-size: 0.88rem;
+    color: var(--text2);
+    line-height: 1.7;
+    font-weight: 400;
+    margin-bottom: 1.2rem;
+  }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .project-tag {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    background: rgba(124,58,237,0.1);
+    border: 1px solid rgba(124,58,237,0.3);
+    border-radius: 3px;
+    color: #c4b5fd;
+  }
+
+  /* ── EDUCATION ── */
+  .edu-timeline { position: relative; padding-left: 2rem; }
+  .edu-timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 8px; bottom: 0;
+    width: 2px; background: var(--border);
+  }
+  .edu-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+  }
+  .edu-item::before {
+    content: '';
+    position: absolute; left: -2.4rem; top: 8px;
+    width: 10px; height: 10px;
+    background: var(--blue);
+    border-radius: 50%;
+    border: 2px solid var(--bg);
+  }
+  .edu-year {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--blue);
+    letter-spacing: 2px;
+    margin-bottom: 0.4rem;
+  }
+  .edu-degree {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+  }
+  .edu-school {
+    font-size: 0.9rem;
+    color: #60a5fa;
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+  }
+  .edu-detail {
+    font-size: 0.85rem;
+    color: var(--text2);
+    font-weight: 400;
+  }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--bg2); max-width: 100%; }
+  #contact .inner { max-width: 1100px; margin: 0 auto; padding: 5rem 2.5rem; }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .contact-info p {
+    color: var(--text2);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    font-weight: 400;
+    margin-bottom: 2rem;
+  }
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.2rem;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .contact-link:hover { border-color: var(--blue); transform: translateX(4px); }
+  .contact-link-icon {
+    width: 36px; height: 36px;
+    background: rgba(59,130,246,0.1);
+    border: 1px solid rgba(59,130,246,0.3);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--blue);
+    flex-shrink: 0;
+  }
+  .contact-link-text { flex: 1; }
+  .contact-link-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--text3);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .contact-link-value {
+    font-size: 0.9rem;
+    color: var(--text);
+    margin-top: 0.15rem;
+  }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-form input,
+  .contact-form textarea {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.8rem 1rem;
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    outline: none;
+    transition: border-color 0.2s;
+    resize: none;
+  }
+  .contact-form input:focus,
+  .contact-form textarea:focus { border-color: var(--blue); }
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder { color: var(--text3); }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid var(--border);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--text3);
+    letter-spacing: 1px;
+    background: var(--bg);
+    margin-top: auto;
+  }
+  footer span { color: var(--blue); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 700px) {
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    nav { padding: 1rem 1.2rem; }
+    .nav-links { gap: 1rem; }
+    section { padding: 3.5rem 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
 <nav>
-  <div class="logo">AR.DEV</div>
-  <div class="nav-links">
-    <button class="active" onclick="show('hero',this)">home</button>
-    <button onclick="show('about',this)">about</button>
-    <button onclick="show('skills',this)">skills</button>
-    <button onclick="show('projects',this)">projects</button>
-    <button onclick="show('education',this)">education</button>
-    <button onclick="show('contact',this)">contact</button>
-  </div>
+  <div class="nav-logo">AR.DEV</div>
+  <ul class="nav-links">
+    <li><a href="#about">about</a></li>
+    <li><a href="#skills">skills</a></li>
+    <li><a href="#projects">projects</a></li>
+    <li><a href="#education">education</a></li>
+    <li><a href="#contact">contact</a></li>
+  </ul>
 </nav>
 
 <!-- HERO -->
-<div id="hero" class="section active">
-  <div class="hero-wrap">
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
     <div class="hero-tag">// hello world</div>
-    <div class="hero-name">AROMAL<br/><span>RAJ</span></div>
+    <h1 class="hero-name">AROMAL<br/><span>RAJ</span></h1>
     <div class="hero-role">Future Embedded Systems Engineer &amp; ECE Student</div>
-    <p class="hero-bio">Passionate about building intelligent systems at the intersection of hardware and software. Currently pursuing B.Tech in Electronics &amp; Communication Engineering at Amal Jyothi College of Engineering.</p>
-    <div class="hero-btns">
-      <button class="btn-p" onclick="show('projects',document.querySelectorAll('.nav-links button')[4])">View Projects</button>
-      <button class="btn-o" onclick="show('contact',document.querySelectorAll('.nav-links button')[5])">Get in Touch</button>
+    <p class="hero-bio">
+      Passionate about building intelligent systems at the intersection of hardware and software.
+      Currently pursuing B.Tech in Electronics &amp; Communication Engineering at
+      Amal Jyothi College of Engineering, Kanjirappally.
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">View Projects</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.5rem;">
+      <div class="stat-card"><div class="stat-num">5th</div><div class="stat-label">Semester</div></div>
+      <div class="stat-card"><div class="stat-num">8.11</div><div class="stat-label">CGPA</div></div>
+      <div class="stat-card"><div class="stat-num">5+</div><div class="stat-label">Skills</div></div>
+      <div class="stat-card"><div class="stat-num">3+</div><div class="stat-label">Projects</div></div>
     </div>
   </div>
-  <div class="stats-row">
-    <div class="stat"><div class="stat-n">5th</div><div class="stat-l">Semester</div></div>
-    <div class="stat"><div class="stat-n">8.11</div><div class="stat-l">CGPA</div></div>
-    <div class="stat"><div class="stat-n">5+</div><div class="stat-l">Skills</div></div>
-    <div class="stat"><div class="stat-n">3+</div><div class="stat-l">Projects</div></div>
-  </div>
-</div>
+</section>
 
 <!-- ABOUT -->
-<div id="about" class="section">
-  <div class="stag">// 01. about</div>
-  <div class="stitle">About Me</div>
-  <div class="sline"></div>
-  <p style="font-size:13px;color:#94a3b8;line-height:1.9;margin-bottom:14px">I'm Aromal Raj, a B.Tech ECE student at Amal Jyothi College of Engineering, Kerala. I have a deep passion for embedded systems, IoT, and bridging hardware intelligence with software innovation.</p>
-  <p style="font-size:13px;color:#94a3b8;line-height:1.9;margin-bottom:14px">My journey involves building microcontroller-based systems, exploring VLSI design, and applying machine learning to solve real-world engineering problems. I'm always eager to learn, build, and contribute.</p>
-  <p style="font-size:13px;color:#94a3b8;line-height:1.9">When I'm not coding or prototyping, I'm exploring signal processing, PCB design with Autodesk Fusion 360, and advancing my understanding of probability and random processes.</p>
-</div>
+<section id="about">
+  <div class="section-tag">// 01. about</div>
+  <h2 class="section-title">About Me</h2>
+  <div class="section-line"></div>
+  <div class="about-grid fade-in">
+    <div class="about-text">
+      <p>
+        I'm Aromal Raj, a 4th-semester ECE student at Amal Jyothi College of Engineering, Kerala.
+        I have a deep passion for embedded systems, IoT, and bridging the gap between hardware
+        intelligence and software innovation.
+      </p>
+      <p>
+        My journey involves building microcontroller-based systems, exploring VLSI design,
+        and applying machine learning to solve real-world engineering problems.
+        I'm always eager to learn, build, and contribute.
+      </p>
+      <p>
+        When I'm not coding or prototyping, I'm exploring the latest in signal processing,
+        PCB design with Autodesk Fusion 360, and advancing my understanding of
+        probability and random processes.
+      </p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-card">
+        <div class="stat-num">5th</div>
+        <div class="stat-label">Semester</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">8.11</div>
+        <div class="stat-label">CGPA</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Tech Skills</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Projects Built</div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- SKILLS -->
-<div id="skills" class="section">
-  <div class="stag">// 02. skills</div>
-  <div class="stitle">Tech Stack</div>
-  <div class="sline"></div>
-  <div class="skills-grid">
-    <div class="skill-cat">
-      <div class="scat-title">Languages</div>
-      <div class="tags">
-        <span class="tag">Embedded C</span>
-        <span class="tag">Python</span>
-        <span class="tag">MATLAB</span>
-        <span class="tag">Assembly</span>
+<section id="skills" style="padding:0">
+<div id="skills">
+  <div class="inner">
+    <div class="section-tag">// 02. skills</div>
+    <h2 class="section-title">Tech Stack</h2>
+    <div class="section-line"></div>
+    <div class="skills-grid fade-in">
+      <div class="skill-category">
+        <div class="skill-cat-title">Languages</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Embedded C</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">MATLAB</span>
+          <span class="skill-tag">Assembly</span>
+        </div>
       </div>
-    </div>
-    <div class="skill-cat">
-      <div class="scat-title">Hardware &amp; IoT</div>
-      <div class="tags">
-        <span class="tag p">Arduino</span>
-        <span class="tag p">ESP32</span>
-        <span class="tag p">Raspberry Pi</span>
-        <span class="tag p">VLSI</span>
+      <div class="skill-category">
+        <div class="skill-cat-title">Hardware &amp; IoT</div>
+        <div class="skill-tags">
+          <span class="skill-tag purple">Arduino</span>
+          <span class="skill-tag purple">ESP32</span>
+          <span class="skill-tag purple">Raspberry Pi</span>
+          <span class="skill-tag purple">VLSI Design</span>
+        </div>
       </div>
-    </div>
-    <div class="skill-cat">
-      <div class="scat-title">Tools &amp; Software</div>
-      <div class="tags">
-        <span class="tag c">Fusion 360</span>
-        <span class="tag c">Keil uVision</span>
-        <span class="tag c">Git</span>
-        <span class="tag c">VS Code</span>
+      <div class="skill-category">
+        <div class="skill-cat-title">Tools &amp; Software</div>
+        <div class="skill-tags">
+          <span class="skill-tag cyan">Autodesk Fusion 360</span>
+          <span class="skill-tag cyan">Keil uVision</span>
+          <span class="skill-tag cyan">Git</span>
+          <span class="skill-tag cyan">VS Code</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title">Core Domains</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Signal Processing</span>
+          <span class="skill-tag">Machine Learning</span>
+          <span class="skill-tag">Electromagnetics</span>
+          <span class="skill-tag">Comm. Systems</span>
+        </div>
       </div>
     </div>
   </div>
 </div>
+</section>
 
 <!-- PROJECTS -->
-<div id="projects" class="section">
-  <div class="stag">// 03. projects</div>
-  <div class="stitle">Projects</div>
-  <div class="sline"></div>
-  <div class="proj-grid">
-    <div class="proj-card">
-      <div class="pnum">PROJECT_01</div>
-      <div class="ptitle">Smart IoT Energy Monitor</div>
-      <p class="pdesc">A real-time energy monitoring system using ESP32 and current sensors to track household power consumption. Data is visualized on a web dashboard via MQTT protocol.</p>
-      <div class="ptags"><span class="ptag">ESP32</span><span class="ptag">MQTT</span><span class="ptag">Python</span><span class="ptag">IoT</span></div>
-    </div>
-    <div class="proj-card">
-      <div class="pnum">PROJECT_02</div>
-      <div class="ptitle">Embedded Fault Detection System</div>
-      <p class="pdesc">Microcontroller-based fault detection for industrial motors using vibration and temperature sensors. Triggers alerts when anomalies exceed set thresholds.</p>
-      <div class="ptags"><span class="ptag">Embedded C</span><span class="ptag">Arduino</span><span class="ptag">Sensors</span><span class="ptag">RTOS</span></div>
-    </div>
-    <div class="proj-card">
-      <div class="pnum">PROJECT_03</div>
-      <div class="ptitle">ML-Based Signal Classifier</div>
-      <p class="pdesc">A machine learning pipeline to classify modulated communication signals using Python and scikit-learn. Trained on synthetic BPSK/QPSK/AM datasets.</p>
-      <div class="ptags"><span class="ptag">Python</span><span class="ptag">ML</span><span class="ptag">MATLAB</span><span class="ptag">DSP</span></div>
-    </div>
-  </div>
-</div>
-
-<!-- EDUCATION -->
-<div id="education" class="section">
-  <div class="stag">// 04. education</div>
-  <div class="stitle">Education</div>
-  <div class="sline"></div>
-  <div class="edu-tl">
-    <div class="edu-item">
-      <div class="eyear">2023 — PRESENT</div>
-      <div class="edeg">B.Tech — Electronics &amp; Communication Engineering</div>
-      <div class="eschool">Amal Jyothi College of Engineering — Autonomous</div>
-      <div class="edetail">Kanjirappally, Kerala &nbsp;·&nbsp; CGPA: 8.11</div>
-    </div>
-    <div class="edu-item">
-      <div class="eyear">2021 — 2023</div>
-      <div class="edeg">Higher Secondary Education (Science — PCM)</div>
-      <div class="eschool">Kerala State Board</div>
-      <div class="edetail">Kottarakara, Kerala</div>
-    </div>
-  </div>
-</div>
-
-<!-- CONTACT -->
-<div id="contact" class="section">
-  <div class="stag">// 05. contact</div>
-  <div class="stitle">Get in Touch</div>
-  <div class="sline"></div>
-  <div class="contact-grid">
-    <div>
-      <p class="contact-p">I'm open to internships, project collaborations, and exciting opportunities in embedded systems and IoT. Feel free to reach out!</p>
-      <div class="clinks">
-        <div class="clink" onclick="openLink('https://www.linkedin.com/in/aromal-raj-7246b6302/')">
-          <div class="cicon">in</div>
-          <div><div class="clabel">LinkedIn</div><div class="cval">aromal-raj-7246b6302</div></div>
-        </div>
-        <div class="clink" onclick="openLink('https://github.com/Aromal-raj')">
-          <div class="cicon">gh</div>
-          <div><div class="clabel">GitHub</div><div class="cval">github.com/Aromal-raj</div></div>
-        </div>
-        <div class="clink">
-          <div class="cicon">@</div>
-          <div><div class="clabel">Email</div><div class="cval">aromalraj@email.com</div></div>
-        </div>
+<section id="projects">
+  <div class="section-tag">// 03. projects</div>
+  <h2 class="section-title">Projects</h2>
+  <div class="section-line"></div>
+  <div class="projects-grid fade-in">
+    <div class="project-card">
+      <div class="project-num">PROJECT_01</div>
+      <div class="project-title">Smart IoT Energy Monitor</div>
+      <p class="project-desc">
+        A real-time energy monitoring system using ESP32 and current sensors to track
+        household power consumption. Data is visualized on a web dashboard via MQTT protocol.
+      </p>
+      <div class="project-tags">
+        <span class="project-tag">ESP32</span>
+        <span class="project-tag">MQTT</span>
+        <span class="project-tag">Python</span>
+        <span class="project-tag">IoT</span>
       </div>
     </div>
-    <div class="cform">
-      <input type="text" placeholder="Your Name"/>
-      <input type="email" placeholder="Your Email"/>
-      <textarea rows="5" placeholder="Your Message"></textarea>
-      <button class="btn-p" style="align-self:flex-start">Send Message</button>
+    <div class="project-card">
+      <div class="project-num">PROJECT_02</div>
+      <div class="project-title">Embedded Fault Detection System</div>
+      <p class="project-desc">
+        Microcontroller-based fault detection for industrial motors using vibration and
+        temperature sensors. Triggers alerts when anomalies exceed set thresholds.
+      </p>
+      <div class="project-tags">
+        <span class="project-tag">Embedded C</span>
+        <span class="project-tag">Arduino</span>
+        <span class="project-tag">Sensors</span>
+        <span class="project-tag">RTOS</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-num">PROJECT_03</div>
+      <div class="project-title">ML-Based Signal Classifier</div>
+      <p class="project-desc">
+        A machine learning pipeline to classify modulated communication signals using
+        Python and scikit-learn. Trained on synthetic BPSK/QPSK/AM datasets.
+      </p>
+      <div class="project-tags">
+        <span class="project-tag">Python</span>
+        <span class="project-tag">ML</span>
+        <span class="project-tag">MATLAB</span>
+        <span class="project-tag">DSP</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-tag">// 04. education</div>
+  <h2 class="section-title">Education</h2>
+  <div class="section-line"></div>
+  <div class="edu-timeline fade-in">
+    <div class="edu-item">
+      <div class="edu-year">2023 — PRESENT</div>
+      <div class="edu-degree">B.Tech — Electronics &amp; Communication Engineering</div>
+      <div class="edu-school">Amal Jyothi College of Engineering — Autonomous</div>
+      <div class="edu-detail">Kanjirappally, Kerala &nbsp;·&nbsp; Current SGPA: 7.5</div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-year">2021 — 2023</div>
+      <div class="edu-degree">Higher Secondary Education (Science — PCM)</div>
+      <div class="edu-school">Kerala State Board</div>
+      <div class="edu-detail">Kottarakara, Kerala</div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-year">UNTIL 2021</div>
+      <div class="edu-degree">Secondary School Certificate (SSLC)</div>
+      <div class="edu-school">Kerala State Board</div>
+      <div class="edu-detail">Kottarakara, Kerala</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="padding:0">
+<div id="contact">
+  <div class="inner">
+    <div class="section-tag">// 05. contact</div>
+    <h2 class="section-title">Get in Touch</h2>
+    <div class="section-line"></div>
+    <div class="contact-grid fade-in">
+      <div class="contact-info">
+        <p>
+          I'm currently open to internships, project collaborations, and
+          exciting opportunities in embedded systems and IoT. Feel free to reach out!
+        </p>
+        <div class="contact-links">
+          <a href="https://www.linkedin.com/in/aromal-raj-7246b6302/" target="_blank" class="contact-link">
+            <div class="contact-link-icon">in</div>
+            <div class="contact-link-text">
+              <div class="contact-link-label">LinkedIn</div>
+              <div class="contact-link-value">aromal-raj-7246b6302</div>
+            </div>
+          </a>
+          <a href="https://github.com/Aromal-raj" target="_blank" class="contact-link">
+            <div class="contact-link-icon">gh</div>
+            <div class="contact-link-text">
+              <div class="contact-link-label">GitHub</div>
+              <div class="contact-link-value">github.com/Aromal-raj</div>
+            </div>
+          </a>
+          <a href="mailto:aromalraj@email.com" class="contact-link">
+            <div class="contact-link-icon">@</div>
+            <div class="contact-link-text">
+              <div class="contact-link-label">Email</div>
+              <div class="contact-link-value">aromalraj@email.com</div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="contact-form">
+        <input type="text" placeholder="Your Name"/>
+        <input type="email" placeholder="Your Email"/>
+        <textarea rows="5" placeholder="Your Message"></textarea>
+        <button class="btn-primary" style="align-self:flex-start">Send Message</button>
+      </div>
     </div>
   </div>
 </div>
+</section>
 
-<div class="foot">Designed &amp; Built by <span style="color:#3b82f6">Aromal Raj</span> &nbsp;·&nbsp; 2025</div>
-</div>
+<!-- FOOTER -->
+<footer>
+  <p>Designed &amp; Built by <span>Aromal Raj</span> &nbsp;·&nbsp; 2025</p>
+</footer>
 
 <script>
-function show(id,btn){
-  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-  document.querySelectorAll('.nav-links button').forEach(b=>b.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  if(btn) btn.classList.add('active');
-}
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
+</body>
+</html>
